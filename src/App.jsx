@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import Gallery from './imageGallery'
 
 // import './App.css'
 // import Form from "./form"
@@ -11,6 +11,9 @@ import { useState } from "react"
 
 export default function App() {
   const [count,setCount] = useState(0);
+  const [index,setindex] = useState(0);
+
+  const brry = ["mukesh","suresh","arjun"];
   // const {name,age} = props
   
   const handleClick = ()=>{
@@ -29,12 +32,22 @@ export default function App() {
     }
     
   }
+
+  const newName = ()=>{
+    if(index<brry.length-1){
+      setindex(index+1)
+    }
+
+    if(index==2){
+      setindex(0);
+    }
+  }
+  // <p>{brry[index]}</p>
+  //    <button onClick={newName}>next</button>
+  //    <button onClick={handleClick}>+</button>
+  //    <button onClick={MinusHandle}>-</button>
   return (
-     <>
-     <p>{count}</p>
-     <button onClick={handleClick}>+</button>
-     <button onClick={MinusHandle}>-</button>
-     </>
+     <Gallery />
 
   )
 }
