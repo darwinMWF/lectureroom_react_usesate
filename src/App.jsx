@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Gallery from "./imageGallery";
+import StateQueue from "./stateQueue";
+import Form from "./updateObjwithSpreadoprator";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -32,5 +34,16 @@ export default function App() {
   //    <button onClick={newName}>next</button>
   //    <button onClick={handleClick}>+</button>
   //    <button onClick={MinusHandle}>-</button>
-  return <Gallery />;
+
+
+  // <Gallery />
+  // <p>
+  // <StateQueue/>
+  // </p>
+  return (<>
+  
+  <p>
+  <Form />
+  </p>
+  </>);
 }
