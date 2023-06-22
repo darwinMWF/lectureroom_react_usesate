@@ -2,6 +2,7 @@ import { useState } from "react";
 import Gallery from "./imageGallery";
 import StateQueue from "./stateQueue";
 import Form from "./updateObjwithSpreadoprator";
+import Todolist from "./updateArry";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -35,15 +36,13 @@ export default function App() {
   //    <button onClick={handleClick}>+</button>
   //    <button onClick={MinusHandle}>-</button>
 
-
   // <Gallery />
   // <p>
   // <StateQueue/>
   // </p>
-  return (<>
-  
-  <p>
-  <Form />
-  </p>
-  </>);
+  return (
+    <>
+      <Todolist />
+    </>
+  );
 }
