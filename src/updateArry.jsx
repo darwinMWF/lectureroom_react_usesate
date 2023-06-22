@@ -26,6 +26,7 @@ const Todolist = () => {
 
   const handleClick = () => {
     setarry([...arry,  value ]);
+    setvalue({...value,name:''});
   };
 
   const handlechange = (e) => {
@@ -36,7 +37,7 @@ const Todolist = () => {
     <>
       <h1>Art Bucket List</h1>
       <h2>My list of art to see:</h2>
-      <input type="text" onChange={handlechange} />
+      <input type="text" value={value.name} onChange={handlechange} />
       <button onClick={handleClick}>add</button>
       <Items data={arry} />
     </>
