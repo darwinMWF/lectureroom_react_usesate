@@ -31,18 +31,24 @@ export default function App() {
       setindex(0);
     }
   };
+  //counter wala
   // <p>{brry[index]}</p>
   //    <button onClick={newName}>next</button>
   //    <button onClick={handleClick}>+</button>
   //    <button onClick={MinusHandle}>-</button>
 
+
+  // img gallery
   // <Gallery />
   // <p>
-  // <StateQueue/>
+  //   <StateQueue />
   // </p>
   return (
     <>
       <Todolist />
+      {/* <Form/> */}
+
+     
     </>
   );
 }

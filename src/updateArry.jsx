@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useImmer } from "use-immer";
 
 // const initialList = [
 //   { id: 0, title: "Big Bellies", seen: false },
@@ -7,39 +8,82 @@ import { useState } from "react";
 // ];
 
 const initialarry = [
-  { name: "mukesh" },
-  { name: "suresh" },
-  { name: "arjun" },
-  { name: "neha" },
-  { name: "mena" },
+  { name: "mukesh", id: 0 },
+  { name: "suresh", id: 1 },
+  { name: "arjun", id: 2 },
+  { name: "neha", id: 3 },
+  { name: "mena", id: 4 },
 ];
 
-const Items = ({ data }) => {
-   
-  const list = data.map((item, index) => <li key={index}>{item.name}</li>);
+const Items = ({ data, settingArry }) => {
+  
+
+  // console.log(data)
+  const list = data.map((item) => (
+    <>
+      <li key={item.id}>
+        <span >{item.name}</span>
+        <input
+          type="button"
+          name="delete"
+          value="Delete"
+          onClick={() => { 
+              settingArry(
+                data.filter((a) => {
+                  console.log(a.id);
+                  return a.id !== item.id;
+                })
+              );
+            }
+          }
+        />
+      </li>
+      <br />
+    </>
+  ));
   return <ul>{list}</ul>;
 };
 
 const Todolist = () => {
-  const [value, setvalue] = useState({name:''});
+  const [newid,setid] = useState(6);
+  const [value, setvalue] = useState({ name: "" , id:6});
   const [arry, setarry] = useState(initialarry);
+  
+
+  // const [value, setvalue] = useImmer({ name: "" });
+  // const [arry, setarry] = useImmer(initialarry);
 
   const handleClick = () => {
-    setarry([...arry,  value ]);
-    setvalue({...value,name:''});
+  
+    setarry([...arry, value]);
+    setvalue({ ...value, name: "" });
+    
+
+    // setarry((data) => {
+    //   data.push(value);
+    // });
+    // setvalue((newvalue) => {
+    //   newvalue.name = "";
+    // });
   };
 
-  const handlechange = (e) => {
-    setvalue({...value,name:e.target.value});
+  const handlechange = (e) => { 
+    setid(newid+1)
+    setvalue({...value,name:e.target.value,id:newid});
+    
+
+    // setvalue((newvalue) => {
+    //   newvalue.name = e.target.value;
+    // });
   };
 
   return (
     <>
       <h1>Art Bucket List</h1>
       <h2>My list of art to see:</h2>
-      <input type="text" value={value.name} onChange={handlechange} />
+      <input type="text"  onChange={handlechange} />
       <button onClick={handleClick}>add</button>
-      <Items data={arry} />
+      <Items data={arry} settingArry={setarry}  />
     </>
   );
 };
