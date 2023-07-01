@@ -19,9 +19,9 @@ const Items = ({ data, settingArry }) => {
   
 
   // console.log(data)
-  const list = data.map((item) => (
-    <>
-      <li key={item.id}>
+  const list = data.map((item,i) => (
+  
+      <li key={i}>
         <span >{item.name}</span>
         <input
           type="button"
@@ -38,8 +38,8 @@ const Items = ({ data, settingArry }) => {
           }
         />
       </li>
-      <br />
-    </>
+      
+    
   ));
   return <ul>{list}</ul>;
 };
@@ -55,7 +55,7 @@ const Todolist = () => {
 
   const handleClick = () => {
   
-    setarry([...arry, value]);
+    setarry([ value,...arry]);
     setvalue({ ...value, name: "" });
     
 
@@ -66,6 +66,12 @@ const Todolist = () => {
     //   newvalue.name = "";
     // });
   };
+
+  const handleReverse = ()=>{
+    const newArry = [...arry];
+    newArry.reverse();
+    setarry(newArry)
+  }
 
   const handlechange = (e) => { 
     setid(newid+1)
@@ -83,6 +89,7 @@ const Todolist = () => {
       <h2>My list of art to see:</h2>
       <input type="text"  onChange={handlechange} />
       <button onClick={handleClick}>add</button>
+      <button onClick={handleReverse}>reverse</button>
       <Items data={arry} settingArry={setarry}  />
     </>
   );
